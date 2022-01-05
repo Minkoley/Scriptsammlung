@@ -1,4 +1,5 @@
-﻿Set-WinUserLanguageList en-US -Force
+﻿# Set language temorarely to en-US
+Set-WinUserLanguageList en-US -Force
 
 class Software {
     [string]$Name
@@ -9,6 +10,7 @@ class Software {
 
 $upgradeResult = winget upgrade | Out-String
 
+# Set language back to de-DE
 Set-WinUserLanguageList de-DE -Force
 
 if (!($upgradeResult -match "No installed package found matching input criteria."))
@@ -54,6 +56,7 @@ For ($i = $fl + 1; $i -le $lines.Length; $i++)
 $upgradeList | Format-Table
 }
 
+# Skip list
 $toSkip = @(
 'Citrix.Workspace',
 'GnuPG.GnuPG',
